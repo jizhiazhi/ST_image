@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE trakem2_anything [
+	<!ELEMENT trakem2 (project,t2_layer_set,t2_display)>
+	<!ELEMENT project (anything)>
+	<!ATTLIST project id NMTOKEN #REQUIRED>
+	<!ATTLIST project unuid NMTOKEN #REQUIRED>
+	<!ATTLIST project title NMTOKEN #REQUIRED>
+	<!ATTLIST project preprocessor NMTOKEN #REQUIRED>
+	<!ATTLIST project mipmaps_folder NMTOKEN #REQUIRED>
+	<!ATTLIST project storage_folder NMTOKEN #REQUIRED>
+	<!ELEMENT anything EMPTY>
+	<!ATTLIST anything id NMTOKEN #REQUIRED>
+	<!ATTLIST anything expanded NMTOKEN #REQUIRED>
+	<!ELEMENT t2_layer (t2_patch,t2_label,t2_layer_set,t2_profile)>
+	<!ATTLIST t2_layer oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer thickness NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer z NMTOKEN #REQUIRED>
+	<!ELEMENT t2_layer_set (t2_prop,t2_linked_prop,t2_annot,t2_layer,t2_pipe,t2_ball,t2_area_list,t2_calibration,t2_stack,t2_treeline)>
+	<!ATTLIST t2_layer_set oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set layer_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set rot_z NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set snapshots_quality NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set color_cues NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set area_color_cues NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set avoid_color_cue_colors NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set n_layers_color_cue NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_arrows NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_tags NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set paint_edge_confidence_boxes NMTOKEN #REQUIRED>
+	<!ATTLIST t2_layer_set preload_ahead NMTOKEN #REQUIRED>
+	<!ELEMENT t2_calibration EMPTY>
+	<!ATTLIST t2_calibration pixelWidth NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration pixelHeight NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration pixelDepth NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration xOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration yOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration zOrigin NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration info NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration valueUnit NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration timeUnit NMTOKEN #REQUIRED>
+	<!ATTLIST t2_calibration unit NMTOKEN #REQUIRED>
+	<!ELEMENT t2_ball (t2_prop,t2_linked_prop,t2_annot,t2_ball_ob)>
+	<!ATTLIST t2_ball oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball fill NMTOKEN #REQUIRED>
+	<!ELEMENT t2_ball_ob EMPTY>
+	<!ATTLIST t2_ball_ob x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob r NMTOKEN #REQUIRED>
+	<!ATTLIST t2_ball_ob layer_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_label (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_label oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_label composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_filter EMPTY>
+	<!ELEMENT t2_patch (t2_prop,t2_linked_prop,t2_annot,ict_transform,ict_transform_list,t2_filter)>
+	<!ATTLIST t2_patch oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch file_path NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch original_path NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch type NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch false_color NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch ct NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch min NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch max NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch o_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch pps NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch mres NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch ct_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_patch alpha_mask_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_pipe (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_pipe oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe d NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe p_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_pipe layer_ids NMTOKEN #REQUIRED>
+	<!ELEMENT t2_polyline (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_polyline oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_polyline d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_profile (t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_profile oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_profile d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_area_list (t2_prop,t2_linked_prop,t2_annot,t2_area)>
+	<!ATTLIST t2_area_list oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_area_list fill_paint NMTOKEN #REQUIRED>
+	<!ELEMENT t2_area (t2_path)>
+	<!ATTLIST t2_area layer_id NMTOKEN #REQUIRED>
+	<!ELEMENT t2_path EMPTY>
+	<!ATTLIST t2_path d NMTOKEN #REQUIRED>
+	<!ELEMENT t2_dissector (t2_prop,t2_linked_prop,t2_annot,t2_dd_item)>
+	<!ATTLIST t2_dissector oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dissector composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_dd_item EMPTY>
+	<!ATTLIST t2_dd_item radius NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dd_item tag NMTOKEN #REQUIRED>
+	<!ATTLIST t2_dd_item points NMTOKEN #REQUIRED>
+	<!ELEMENT t2_stack (t2_prop,t2_linked_prop,t2_annot,(iict_transform|iict_transform_list)?)>
+	<!ATTLIST t2_stack oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack composite NMTOKEN #REQUIRED>
+	<!ATTLIST t2_stack file_path CDATA #REQUIRED>
+	<!ATTLIST t2_stack depth CDATA #REQUIRED>
+	<!ELEMENT t2_tag EMPTY>
+	<!ATTLIST t2_tag name NMTOKEN #REQUIRED>
+	<!ATTLIST t2_tag key NMTOKEN #REQUIRED>
+	<!ELEMENT t2_node (t2_area*,t2_tag*)>
+	<!ATTLIST t2_node x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node lid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node c NMTOKEN #REQUIRED>
+	<!ATTLIST t2_node r NMTOKEN #IMPLIED>
+	<!ELEMENT t2_treeline (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_treeline oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_treeline composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_areatree (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_areatree oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_areatree composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_connector (t2_node*,t2_prop,t2_linked_prop,t2_annot)>
+	<!ATTLIST t2_connector oid NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector transform NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector style NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector locked NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector visible NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector title NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector links NMTOKEN #REQUIRED>
+	<!ATTLIST t2_connector composite NMTOKEN #REQUIRED>
+	<!ELEMENT t2_prop EMPTY>
+	<!ATTLIST t2_prop key NMTOKEN #REQUIRED>
+	<!ATTLIST t2_prop value NMTOKEN #REQUIRED>
+	<!ELEMENT t2_linked_prop EMPTY>
+	<!ATTLIST t2_linked_prop target_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_linked_prop key NMTOKEN #REQUIRED>
+	<!ATTLIST t2_linked_prop value NMTOKEN #REQUIRED>
+	<!ELEMENT t2_annot EMPTY>
+	<!ELEMENT t2_display EMPTY>
+	<!ATTLIST t2_display id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display layer_id NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display magnification NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_x NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_y NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_width NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display srcrect_height NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display scroll_step NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display c_alphas NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display c_alphas_state NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_min_max_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_min NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_max NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_invert NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_enabled NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_block_size NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_histogram_bins NMTOKEN #REQUIRED>
+	<!ATTLIST t2_display filter_clahe_max_slope NMTOKEN #REQUIRED>
+	<!ELEMENT ict_transform EMPTY>
+	<!ATTLIST ict_transform class CDATA #REQUIRED>
+	<!ATTLIST ict_transform data CDATA #REQUIRED>
+	<!ELEMENT iict_transform EMPTY>
+	<!ATTLIST iict_transform class CDATA #REQUIRED>
+	<!ATTLIST iict_transform data CDATA #REQUIRED>
+	<!ELEMENT ict_transform_list (ict_transform|iict_transform)*>
+	<!ELEMENT iict_transform_list (iict_transform*)>
+] >
+
+<trakem2>
+	<project 
+		id="0"
+		title="Project"
+		unuid="1748919898272.1811837811.209200686"
+		mipmaps_folder="D:/??/??/registration/raw_img/trakem2.1748919898272.1811837811.209200686/trakem2.mipmaps/"
+		storage_folder="D:/??/??/registration/raw_img/"
+		mipmaps_format="4"
+		image_resizing_mode="Area downsampling"
+		first_mipmap_level_saved="0"
+	>
+	</project>
+	<t2_layer_set
+		oid="3"
+		width="20.0"
+		height="20.0"
+		transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"
+		title="Top Level"
+		links=""
+		layer_width="759.0"
+		layer_height="729.0"
+		rot_x="0.0"
+		rot_y="0.0"
+		rot_z="0.0"
+		snapshots_quality="true"
+		snapshots_mode="Full"
+		color_cues="true"
+		area_color_cues="true"
+		avoid_color_cue_colors="false"
+		n_layers_color_cue="0"
+		paint_arrows="true"
+		paint_tags="true"
+		paint_edge_confidence_boxes="true"
+		prepaint="false"
+		preload_ahead="0"
+	>
+		<t2_calibration
+			pixelWidth="1.0"
+			pixelHeight="1.0"
+			pixelDepth="1.0"
+			xOrigin="0.0"
+			yOrigin="0.0"
+			zOrigin="0.0"
+			info="null"
+			valueUnit="Gray Value"
+			timeUnit="sec"
+			unit="pixel"
+		/>
+		<t2_layer oid="5"
+			 thickness="1.0"
+			 z="0.0"
+			 title=""
+		>
+			<t2_patch
+				oid="8"
+				width="561.0"
+				height="221.0"
+				transform="matrix(-0.9964611650569898,0.0840544260183147,-0.0840544260183147,-0.9964611650569898,735.9830185200057,441.9907620790789)"
+				title="T345.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T345.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="561"
+				o_height="221"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="9"
+			 thickness="1.0"
+			 z="1.0"
+			 title=""
+		>
+			<t2_patch
+				oid="11"
+				width="741.0"
+				height="423.0"
+				transform="matrix(0.15308253573620278,0.9882134067359005,-0.9882134067359005,0.15308253573620278,470.63781658810666,-373.2222039238565)"
+				title="T346.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T346.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="741"
+				o_height="423"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="12"
+			 thickness="1.0"
+			 z="2.0"
+			 title=""
+		>
+			<t2_patch
+				oid="14"
+				width="527.0"
+				height="445.0"
+				transform="matrix(0.10617493383625137,0.9943474661429315,-0.9943474661429315,0.10617493383625137,542.814573432335,-142.3878730583188)"
+				title="T347.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T347.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="527"
+				o_height="445"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="15"
+			 thickness="1.0"
+			 z="3.0"
+			 title=""
+		>
+			<t2_patch
+				oid="17"
+				width="408.0"
+				height="552.0"
+				transform="matrix(0.0863013221905829,-0.996269081015845,0.996269081015845,0.0863013221905829,-89.53612168495343,536.4189426441167)"
+				title="T348.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T348.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="408"
+				o_height="552"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="18"
+			 thickness="1.0"
+			 z="4.0"
+			 title=""
+		>
+			<t2_patch
+				oid="20"
+				width="531.0"
+				height="392.0"
+				transform="matrix(-0.9792637238271379,0.20258963249931844,-0.20258963249931844,-0.9792637238271379,664.2517896745983,437.1665594984124)"
+				title="T349.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T349.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="531"
+				o_height="392"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="21"
+			 thickness="1.0"
+			 z="5.0"
+			 title=""
+		>
+			<t2_patch
+				oid="23"
+				width="591.0"
+				height="487.0"
+				transform="matrix(0.1437961035383405,0.989607336577085,-0.989607336577085,0.1437961035383405,495.0545802216053,-153.85195841211575)"
+				title="T350.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T350.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="591"
+				o_height="487"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="24"
+			 thickness="1.0"
+			 z="6.0"
+			 title=""
+		>
+			<t2_patch
+				oid="26"
+				width="519.0"
+				height="607.0"
+				transform="matrix(0.07052360550122305,0.9975101107593386,-0.9975101107593386,0.07052360550122305,642.1493902250802,-73.17667645833835)"
+				title="T351.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T351.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="519"
+				o_height="607"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="27"
+			 thickness="1.0"
+			 z="7.0"
+			 title=""
+		>
+			<t2_patch
+				oid="29"
+				width="759.0"
+				height="547.0"
+				transform="matrix(-0.9999997553216676,-6.995402810334665E-4,6.995402810334665E-4,-0.9999997553216676,805.519797288491,659.9911440986003)"
+				title="T352.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T352.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="759"
+				o_height="547"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="30"
+			 thickness="1.0"
+			 z="8.0"
+			 title=""
+		>
+			<t2_patch
+				oid="32"
+				width="633.0"
+				height="477.0"
+				transform="matrix(0.9986022027155014,-0.052854902627370914,0.052854902627370914,0.9986022027155014,-119.13776288341278,11.034824983959922)"
+				title="T353.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T353.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="633"
+				o_height="477"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="33"
+			 thickness="1.0"
+			 z="9.0"
+			 title=""
+		>
+			<t2_patch
+				oid="35"
+				width="493.0"
+				height="535.0"
+				transform="matrix(0.08009183447665104,-0.9967874889113352,0.9967874889113352,0.08009183447665104,-22.936326269568855,603.8231094322823)"
+				title="T354.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T354.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="493"
+				o_height="535"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="36"
+			 thickness="1.0"
+			 z="10.0"
+			 title=""
+		>
+			<t2_patch
+				oid="38"
+				width="700.0"
+				height="367.0"
+				transform="matrix(-0.9997258035916569,-0.023416183143631548,0.023416183143631548,-0.9997258035916569,721.6188697417947,501.1454861575441)"
+				title="T355.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T355.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="700"
+				o_height="367"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="39"
+			 thickness="1.0"
+			 z="11.0"
+			 title=""
+		>
+			<t2_patch
+				oid="41"
+				width="506.0"
+				height="544.0"
+				transform="matrix(-0.06566710075294312,0.9978415865650737,-0.9978415865650737,-0.06566710075294312,585.0256077572083,-28.546000748581807)"
+				title="T356.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T356.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="506"
+				o_height="544"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="42"
+			 thickness="1.0"
+			 z="12.0"
+			 title=""
+		>
+			<t2_patch
+				oid="44"
+				width="533.0"
+				height="469.0"
+				transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"
+				title="T357.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T357.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="533"
+				o_height="469"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="45"
+			 thickness="1.0"
+			 z="13.0"
+			 title=""
+		>
+			<t2_patch
+				oid="47"
+				width="630.0"
+				height="525.0"
+				transform="matrix(-0.11846629008618534,-0.9929580747006476,0.9929580747006476,-0.11846629008618534,47.122274496383575,753.7929989225386)"
+				title="T358.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T358.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="630"
+				o_height="525"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="48"
+			 thickness="1.0"
+			 z="14.0"
+			 title=""
+		>
+			<t2_patch
+				oid="50"
+				width="501.0"
+				height="528.0"
+				transform="matrix(-0.272721703559031,0.9620929645350602,-0.9620929645350602,-0.272721703559031,642.1588773820584,17.475599705564008)"
+				title="T360.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T360.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="501"
+				o_height="528"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="51"
+			 thickness="1.0"
+			 z="15.0"
+			 title=""
+		>
+			<t2_patch
+				oid="53"
+				width="609.0"
+				height="501.0"
+				transform="matrix(-0.057528442915870434,0.998343867740808,-0.998343867740808,-0.057528442915870434,563.1000652059255,-130.0190079500192)"
+				title="T361.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T361.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="609"
+				o_height="501"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="54"
+			 thickness="1.0"
+			 z="16.0"
+			 title=""
+		>
+			<t2_patch
+				oid="56"
+				width="338.0"
+				height="535.0"
+				transform="matrix(0.10816387168170509,-0.9941330780447969,0.9941330780447969,0.10816387168170509,-42.75125636894506,467.0942330675697)"
+				title="T362.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T362.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="338"
+				o_height="535"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="57"
+			 thickness="1.0"
+			 z="17.0"
+			 title=""
+		>
+			<t2_patch
+				oid="59"
+				width="662.0"
+				height="340.0"
+				transform="matrix(-0.9994024429734474,-0.03456525681529496,0.03456525681529496,-0.9994024429734474,694.8656859071262,511.3964951814796)"
+				title="T363.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T363.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="662"
+				o_height="340"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="60"
+			 thickness="1.0"
+			 z="18.0"
+			 title=""
+		>
+			<t2_patch
+				oid="62"
+				width="603.0"
+				height="634.0"
+				transform="matrix(0.984594339698289,0.17485418563503,-0.17485418563503,0.984594339698289,-8.934119402880825,-241.74751556050194)"
+				title="T364.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T364.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="603"
+				o_height="634"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="63"
+			 thickness="1.0"
+			 z="19.0"
+			 title=""
+		>
+			<t2_patch
+				oid="65"
+				width="507.0"
+				height="277.0"
+				transform="matrix(-0.9986476257962555,-0.05198960945710102,0.05198960945710102,-0.9986476257962555,540.1298230282334,469.10298279932493)"
+				title="T365.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T365.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="507"
+				o_height="277"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="66"
+			 thickness="1.0"
+			 z="20.0"
+			 title=""
+		>
+			<t2_patch
+				oid="68"
+				width="635.0"
+				height="484.0"
+				transform="matrix(0.9827739755866167,0.18481156054120584,-0.18481156054120584,0.9827739755866167,-61.814952609985845,-124.41656678352346)"
+				title="T366.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T366.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="635"
+				o_height="484"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="69"
+			 thickness="1.0"
+			 z="21.0"
+			 title=""
+		>
+			<t2_patch
+				oid="71"
+				width="460.0"
+				height="474.0"
+				transform="matrix(0.393292959082613,-0.9194132087021812,0.9194132087021812,0.393292959082613,-66.40477245076926,484.2535267850001)"
+				title="T367.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T367.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="460"
+				o_height="474"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="72"
+			 thickness="1.0"
+			 z="22.0"
+			 title=""
+		>
+			<t2_patch
+				oid="74"
+				width="470.0"
+				height="466.0"
+				transform="matrix(-0.11723160465069894,0.9931046021799627,-0.9931046021799627,-0.11723160465069894,555.9427994008458,-16.06461762867846)"
+				title="T368.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T368.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="470"
+				o_height="466"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="75"
+			 thickness="1.0"
+			 z="23.0"
+			 title=""
+		>
+			<t2_patch
+				oid="77"
+				width="469.0"
+				height="594.0"
+				transform="matrix(-0.2980690690927845,0.9545443049173571,-0.9545443049173571,-0.2980690690927845,737.2478207281665,72.16314616989519)"
+				title="T369.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T369.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="469"
+				o_height="594"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="78"
+			 thickness="1.0"
+			 z="24.0"
+			 title=""
+		>
+			<t2_patch
+				oid="80"
+				width="666.0"
+				height="729.0"
+				transform="matrix(-0.9801159520668947,-0.1984256044566942,0.1984256044566942,-0.9801159520668947,603.6594120889524,994.3534796383562)"
+				title="T370.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T370.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="666"
+				o_height="729"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="81"
+			 thickness="1.0"
+			 z="25.0"
+			 title=""
+		>
+			<t2_patch
+				oid="83"
+				width="458.0"
+				height="419.0"
+				transform="matrix(-0.11103137874425714,0.9938169011111397,-0.9938169011111397,-0.11103137874425714,523.1143710748744,-18.099575153209766)"
+				title="T371.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T371.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="458"
+				o_height="419"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="84"
+			 thickness="1.0"
+			 z="26.0"
+			 title=""
+		>
+			<t2_patch
+				oid="86"
+				width="539.0"
+				height="441.0"
+				transform="matrix(0.9988202520235729,0.0485603145332275,-0.0485603145332275,0.9988202520235729,-65.99937859703098,-49.80318005462432)"
+				title="T372.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T372.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="539"
+				o_height="441"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+		<t2_layer oid="87"
+			 thickness="1.0"
+			 z="27.0"
+			 title=""
+		>
+			<t2_patch
+				oid="89"
+				width="259.0"
+				height="393.0"
+				transform="matrix(0.20110713097134128,-0.9795692532294362,0.9795692532294362,0.20110713097134128,57.061606471727444,388.94743599621455)"
+				title="T373.h5ad.csv.tif"
+				links=""
+				type="0"
+				file_path="T373.h5ad.csv.tif"
+				style="fill-opacity:1.0;stroke:#ffff00;"
+				o_width="259"
+				o_height="393"
+				min="0.0"
+				max="255.0"
+				mres="32"
+			>
+			</t2_patch>
+		</t2_layer>
+	</t2_layer_set>
+	<t2_display id="7"
+		layer_id="5"
+		c_alphas="-1"
+		c_alphas_state="-1"
+		x="-8"
+		y="-8"
+		magnification="0.9696738843426642"
+		srcrect_x="0"
+		srcrect_y="0"
+		srcrect_width="759"
+		srcrect_height="729"
+		scroll_step="1"
+		filter_enabled="false"
+		filter_min_max_enabled="false"
+		filter_min="0"
+		filter_max="255"
+		filter_invert="false"
+		filter_clahe_enabled="false"
+		filter_clahe_block_size="127"
+		filter_clahe_histogram_bins="256"
+		filter_clahe_max_slope="3.0"
+	/>
+</trakem2>
